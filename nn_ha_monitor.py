@@ -130,7 +130,7 @@ def restart_zkfc(props,utils,logging):
     if start_zfkc_status == 0:
         logging.info('{0},ok'.format(start_zfkc_cmd))
     else:
-        logging.error('{0},ok'.format(start_zfkc_cmd))
+        logging.error('{0},faild'.format(start_zfkc_cmd))
 
 
 def main():
@@ -170,7 +170,7 @@ def main():
                     status = utils.hdfs_nn_is_active(nn)
                     if (status == 'standby'):
                         nn_has_standby_num = nn_has_standby_num + 1
-                        logging.error('hdfs haadmin -getServiceState {0} : {1}'.format(nn, status))
+                        logging.info('hdfs haadmin -getServiceState {0} : {1}'.format(nn, status))
                     elif (status == 'active'):
                         logging.info('hdfs haadmin -getServiceState {0} : {1}'.format(nn, status))
                     else:
